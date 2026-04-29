@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Next Chapter — AI Prompting Labs</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -316,9 +316,13 @@
     {
       week: 1,
       days: [
-        { label: "Day 1" },
-        {
-          label: "Day 2",
+        { label: "Day 1 Orientation/ What is AI?", 
+             pdfs: [
+            { title: "Day 1 Orientation", src: "Labs/Wk1_Day1 _labs.pdf" }
+        ]
+        },
+
+        { label: "Day 2 Prompting Fundamentals",
           videos: [
             { title: "Make a Website Exercise",                   src: "Labs/Wk1_Day2_make_me_a_website.mp4" },
             { title: "Context Specificity",                       src: "Labs/Wk1_Day2_contextspecificity.mp4" },
@@ -333,7 +337,18 @@
             { title: "Day 2 Lab Notes", src: "Labs/Wk1_day2.pdf" }
         ]
         },
-        { label: "Day 3" },
+        { label: "Day 3 Computational Thinking", 
+          videos: [
+            { title: "Build with Sequence",                   src: "Labs/Wk1_Day3_buildsequence.mp4" },
+            { title: "Build with Selection",                       src: "Labs/Wk1_Day3_selection.mp4" },
+            { title: "Build with Iteration",                                  src: "Labs/Wk1_Day3_builditeration.mp4" },
+            { title: "Prompt/Read Swap",                        src: "Labs/Wk1_Day3_promptreadswap.mp4" },
+             ],
+          pdfs: [
+            { title: "Day 3 Lab Notes", src: "Labs/Wk1_Day 3_labexercises.pdf" }
+        ]
+        },
+
         { label: "Day 4" },
         { label: "Day 5" },
       ]
