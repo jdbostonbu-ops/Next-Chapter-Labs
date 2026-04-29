@@ -7,6 +7,19 @@ Full-Stack Developer in Training · Bilingual (English / Spanish) · New Haven, 
 - Project Website: (https://jdbostonbu-ops.github.io/Next-Chapter-Labs/)
 - Dev Profile: [g.dev/jd-software-eng](https://g.dev/jd-software-eng)
 
+---
+
+## 🌐 Browser & Device Compatibility
+
+
+| Browser / Device | Status | Performance Notes |
+| :--- | :--- | :--- |
+| **Google Chrome** | ✅ Compatible | Full support for Chrome and Chromium-based rendering. Optimized for Firebase sync. |
+| **Microsoft Edge** | ✅ Compatible | Full support for Edge (Chromium) rendering. Optimized for Mapbox GL performance. |
+| **Safari** | ✅ Compatible | Full support for Safari and WebKit rendering. Optimized for SVG marker pulsing. |
+| **Firefox** | ✅ Supported | Full support. Verified for interactive post cards and coordinate mapping. |
+| **iPad & Tablets** | ✅ Supported | Full support. Verified for interactive post cards and coordinate mapping. |
+| **iPhone (iOS)** | ⚠️ Limited | **Tested on iPhone 17 Safari.** Supported only in **Landscape Orientation** at **50% zoom**. |
 
 ---
 
