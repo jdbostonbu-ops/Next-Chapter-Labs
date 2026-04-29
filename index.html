@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Chapter — AI Prompting Labs</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f5f2;
+    --surface: #ffffff;
+    --border: #e5e2dd;
+    --text: #1a1916;
+    --muted: #8a8780;
+    --accent: #2a5c8f;
+    --accent-light: #e8f0f8;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    padding: 3rem 2rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .week { margin-bottom: 3rem; }
+
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .week-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .week-line { flex: 1; height: 1px; background: var(--border); }
+
+  .day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  /* DAY CARD */
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .day-card.has-content:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(42, 92, 143, 0.08);
+  }
+
+  .day-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .day-card:not(.has-content) .day-card-header { cursor: default; }
+
+  .day-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .expand-icon {
+    font-size: 18px;
+    color: var(--muted);
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+
+  .day-card.open .expand-icon { transform: rotate(45deg); }
+
+  /* EMBED PANEL */
+  .embed-panel {
+    display: none;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .day-card.open .embed-panel { display: block; }
+
+  /* PLACEHOLDER */
+  .placeholder {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* VIDEO LIST */
+  .video-list {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .video-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .video-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.875rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .video-item-header:hover { background: var(--accent-light); }
+
+  .video-number {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    min-width: 18px;
+  }
+
+  .video-title {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .video-arrow {
+    font-size: 11px;
+    color: var(--muted);
+    transition: transform 0.25s ease;
+  }
+
+  .video-item.open .video-arrow { transform: rotate(90deg); }
+
+  .video-player {
+    display: none;
+    padding: 0.75rem;
+    border-top: 1px solid var(--border);
+    background: #000;
+  }
+
+  .video-item.open .video-player { display: block; }
+
+  .video-player video {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    max-height: 240px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Next Chapter · Software Engineering Apprenticeship</p>
+  <h1>AI Prompting Labs</h1>
+  <p class="subtitle">A 14-week collection of daily lab work exploring AI tools, full-stack development, and prompt engineering.</p>
+</header>
+
+<main id="lab-container"></main>
+
+<footer>Jacqueline Delgado &nbsp;·&nbsp; Next Chapter Apprenticeship 2026</footer>
+
+<script>
+  // ─────────────────────────────────────────────────────────────
+  // LAB DATA
+  // To add videos to a day, add a "videos" array like Day 2 below.
+  // src paths are relative to this HTML file.
+  // Put your .mov files in a /videos folder next to this file
+  // and rename them to match — or update the src values to match
+  // whatever you name your files.
+  // ─────────────────────────────────────────────────────────────
+  const labs = [
+    {
+      week: 1,
+      days: [
+        { label: "Day 1" },
+        {
+          label: "Day 2",
+          videos: [
+            { title: "Make a Website Exercise",                   src: "labs/Week1 Day2_make me a website.mov" },
+            { title: "Context Specificity",                       src: "labs/W1_Day2_Context_Specificity.mov" },
+            { title: "Iteration",                                  src: "labs/W1_Day2_Iteration.mov" },
+            { title: "Why Prompt Matters",                        src: "labs/W1_Day2_Why_Prompt_Matters.mov" },
+            { title: "Dog Walking Business: Notice the 3rd Image", src: "labs/W1_Day2_DogWalkingBusiness.mov" },
+            { title: "Chat GPT Calculator",                       src: "labs/W1_Day2_Chat GPT Calculator.mov" },
+            { title: "Generous Tipper",                           src: "labs/W1_Day2_Generous Tipper.mov" },
+            { title: "Temperature Converter",                     src: "labs/W1_Day2_Temperature Converter.mov" },
+          ]
+        },
+        { label: "Day 3" },
+        { label: "Day 4" },
+        { label: "Day 5" },
+      ]
+    },
+    { week: 2,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 3,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 4,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 5,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 6,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 7,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 8,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 9,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 10, days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 11, days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 12, days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 13, days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 14, days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+  ];
+
+  // RENDER
+  const container = document.getElementById('lab-container');
+
+  labs.forEach(week => {
+    const section = document.createElement('div');
+    section.className = 'week';
+    section.innerHTML = `
+      <div class="week-header">
+        <span class="week-label">Week ${week.week}</span>
+        <div class="week-line"></div>
+      </div>
+      <div class="day-grid"></div>
+    `;
+    container.appendChild(section);
+    const grid = section.querySelector('.day-grid');
+
+    week.days.forEach(day => {
+      const hasVideos = day.videos && day.videos.length > 0;
+      const card = document.createElement('div');
+      card.className = 'day-card' + (hasVideos ? ' has-content' : '');
+
+      let innerHTML = `<div class="day-card-header">
+        <span class="day-tag">${day.label}</span>
+        ${hasVideos ? '<span class="expand-icon">+</span>' : ''}
+      </div>`;
+
+      if (hasVideos) {
+        const videoItems = day.videos.map((v, i) => `
+          <div class="video-item">
+            <div class="video-item-header">
+              <span class="video-number">${i + 1}.</span>
+              <span class="video-title">${v.title}</span>
+              <span class="video-arrow">▶</span>
+            </div>
+            <div class="video-player">
+              <video controls preload="none">
+                <source src="${v.src}" type="video/quicktime">
+                <source src="${v.src}" type="video/mp4">
+                Your browser does not support this video format.
+              </video>
+            </div>
+          </div>
+        `).join('');
+        innerHTML += `<div class="embed-panel"><div class="video-list">${videoItems}</div></div>`;
+      } else {
+        innerHTML += `<div class="placeholder">Coming soon</div>`;
+      }
+
+      card.innerHTML = innerHTML;
+
+      // Toggle day card
+      if (hasVideos) {
+        card.querySelector('.day-card-header').addEventListener('click', () => {
+          card.classList.toggle('open');
+        });
+
+        // Toggle individual video rows
+        card.querySelectorAll('.video-item-header').forEach(header => {
+          header.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const item = header.parentElement;
+            const wasOpen = item.classList.contains('open');
+            card.querySelectorAll('.video-item').forEach(v => v.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+          });
+        });
+      }
+
+      grid.appendChild(card);
+    });
+  });
+</script>
+
+</body>
+</html>
