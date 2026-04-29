@@ -87,20 +87,7 @@ Labs are recorded screen captures of real work completed each day. Each lab demo
 
 ---
 
-## Background
-
-This apprenticeship builds on a diverse professional background:
-
-- **M.S. Criminal Justice** — Boston University (2010–2012)
-- **B.A. Professional Studies (Business)** — Mitchell College (2003–2006)
-- **Business Owner** — Independent Insurance Agency (2015–2024)
-- **Transportation Security Officer** — Dept. of Homeland Security / TSA (2012–2015)
-- **(ISC)² Certified in Cybersecurity (CC)**
-- **Google Web Development Curriculum** — MDN (April 2026)
-
----
-
-## Portfolio Projects
+## Independent Portfolio Projects
 
 | Project | Description |
 |---------|-------------|
