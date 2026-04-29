@@ -3,9 +3,9 @@
 **Jacqueline Delgado**
 Full-Stack Developer in Training · Bilingual (English / Spanish) · New Haven, CT
 
-- GitHub: [jdbostonbu-ops](https://github.com/jdbostonbu-ops)
+- GitHub Profile: [jdbostonbu-ops](https://github.com/jdbostonbu-ops)
 - Project Website: (https://jdbostonbu-ops.github.io/Next-Chapter-Labs/)
-- Dev Portfolio: [g.dev/jd-software-eng](https://g.dev/jd-software-eng)
+- Dev Profile: [g.dev/jd-software-eng](https://g.dev/jd-software-eng)
 
 
 ---
