@@ -222,6 +222,72 @@
     max-width: 960px;
     margin: 0 auto;
   }
+  /* ── PDF SECTION ── */
+.pdf-section {
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pdf-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  padding: 0 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.pdf-item {
+  border: 1px solid #ddd5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.pdf-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.875rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pdf-item-header:hover { background: #f3eeff; }
+
+.pdf-icon { font-size: 14px; }
+
+.pdf-title {
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+}
+
+.pdf-arrow {
+  font-size: 11px;
+  color: #7c3aed;
+  transition: transform 0.25s ease;
+}
+
+.pdf-item.open .pdf-arrow { transform: rotate(90deg); }
+
+.pdf-viewer {
+  display: none;
+  border-top: 1px solid #ddd5f5;
+}
+
+.pdf-item.open .pdf-viewer { display: block; }
+
+.pdf-viewer iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -261,7 +327,10 @@
             { title: "Chat GPT Calculator",                       src: "Labs/Wk1_Day2_tipcalculator.mp4" },
             { title: "Generous Tipper",                           src: "Labs/Wk1_Day2_generoustipper.mp4" },
             { title: "Temperature Converter",                     src: "Labs/Wk1_Day2_temperatureconverter.mp4" },
-          ]
+          ],
+          pdfs: [
+            { title: "Day 2 Lab Notes", src: "Labs/Wk1_day2.pdf" }
+        ]
         },
         { label: "Day 3" },
         { label: "Day 4" },
@@ -301,14 +370,19 @@
 
     week.days.forEach(day => {
       const hasVideos = day.videos && day.videos.length > 0;
+      const hasPDFs = day.pdfs && day.pdfs.length > 0;
+      const hasContent = hasVideos || hasPDFs;
+      
       const card = document.createElement('div');
-      card.className = 'day-card' + (hasVideos ? ' has-content' : '');
+      card.className = 'day-card' + (hasContent ? ' has-content' : '');
 
+      // 1. Build Header
       let innerHTML = `<div class="day-card-header">
         <span class="day-tag">${day.label}</span>
-        ${hasVideos ? '<span class="expand-icon">+</span>' : ''}
+        ${hasContent ? '<span class="expand-icon">+</span>' : ''}
       </div>`;
 
+      // 2. Build Video Section
       if (hasVideos) {
         const videoItems = day.videos.map((v, i) => `
           <div class="video-item">
@@ -326,33 +400,59 @@
           </div>
         `).join('');
         innerHTML += `<div class="embed-panel"><div class="video-list">${videoItems}</div></div>`;
-      } else {
+      }
+
+      // 3. Build PDF Section
+      if (hasPDFs) {
+        const pdfItems = day.pdfs.map(p => `
+          <a href="${p.src}" target="_blank" class="pdf-item" style="text-decoration: none; display: block;">
+            <div class="pdf-item-header">
+              <span class="pdf-icon">📄</span>
+              <span class="pdf-title">${p.title}</span>
+              <span class="pdf-arrow" style="transform: rotate(-45deg); display: inline-block;">↗</span>
+            </div>
+          </a>
+        `).join('');
+        
+        innerHTML += `<div class="embed-panel">
+          <div class="pdf-section">
+            <div class="pdf-section-label">📎 Documents</div>
+            ${pdfItems}
+          </div>
+        </div>`;
+      }
+
+      // 4. Placeholder if empty
+      if (!hasContent) {
         innerHTML += `<div class="placeholder">Coming soon</div>`;
       }
 
       card.innerHTML = innerHTML;
 
-      // Toggle day card
-      if (hasVideos) {
+      // 5. Interactive Logic
+      if (hasContent) {
+        // Toggle the main card
         card.querySelector('.day-card-header').addEventListener('click', () => {
           card.classList.toggle('open');
         });
 
-        // Toggle individual video rows
-        card.querySelectorAll('.video-item-header').forEach(header => {
-          header.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const item = header.parentElement;
-            const wasOpen = item.classList.contains('open');
-            card.querySelectorAll('.video-item').forEach(v => v.classList.remove('open'));
-            if (!wasOpen) item.classList.add('open');
+        // Toggle video accordions inside the card
+        if (hasVideos) {
+          card.querySelectorAll('.video-item-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+              e.stopPropagation(); // Prevents closing the main card
+              const item = header.parentElement;
+              const wasOpen = item.classList.contains('open');
+              card.querySelectorAll('.video-item').forEach(v => v.classList.remove('open'));
+              if (!wasOpen) item.classList.add('open');
+            });
           });
-        });
+        }
       }
 
       grid.appendChild(card);
-    });
-  });
+    }); 
+  }); 
 </script>
 
 </body>
