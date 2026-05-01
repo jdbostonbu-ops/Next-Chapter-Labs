@@ -346,10 +346,20 @@
              ],
           pdfs: [
             { title: "Day 3 Lab Notes", src: "Labs/Wk1_Day 3_labexercises.pdf" }
-        ]
+        ],
         },
 
-        { label: "Day 4" },
+        { label: "Day 4 Human Lane vs AI Lane",
+         repo: [
+            { title: "Day 4 Repository",
+            url: "https://jdbostonbu-ops.github.io/About-Me/" },
+            { title: "Day 4 Repository",
+            url: "https://jdbostonbu-ops.github.io/Dog-Walking-Business/" },
+       ], 
+             pdfs: [
+            { title: "Day 4 Lab Notes", src: "Labs/Wk1_Day4.pdf" }
+        ]
+        },
         { label: "Day 5" },
       ]
     },
@@ -437,8 +447,25 @@
           </div>
         </div>`;
       }
+      // 4. Build Repository Section
+      if (day.repo) {
+        innerHTML += `
+          <div class="embed-panel">
+            <div class="pdf-section">
+              <div class="pdf-section-label">🔗 Repository</div>
+              <a href="${day.repo.url}" target="_blank" class="pdf-item" style="text-decoration: none; display: block;">
+                <div class="pdf-item-header">
+                  <span class="pdf-icon">💻</span>
+                  <span class="pdf-title">${day.repo.title}</span>
+                  <span class="pdf-arrow" style="transform: rotate(-45deg); display: inline-block;">↗</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        `;
+      }
 
-      // 4. Placeholder if empty
+      // 5. Placeholder if empty
       if (!hasContent) {
         innerHTML += `<div class="placeholder">Coming soon</div>`;
       }

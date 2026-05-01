@@ -1,7 +1,8 @@
 ## Author
 
 **Jacqueline Delgado**
-Full-Stack Developer in Training · Bilingual (English / Spanish) · New Haven, CT
+Full-Stack Developer in Training · Master in Criminal Justice · Bachelor of Arts with a concentraion in Business
+> This website was created in 5 minutes by applying correct prompting techniques and methods.
 
 - GitHub Profile: [jdbostonbu-ops](https://github.com/jdbostonbu-ops)
 - Project Website: (https://jdbostonbu-ops.github.io/Next-Chapter-Labs/)
