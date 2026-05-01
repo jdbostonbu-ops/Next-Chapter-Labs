@@ -397,7 +397,8 @@
     week.days.forEach(day => {
       const hasVideos = day.videos && day.videos.length > 0;
       const hasPDFs = day.pdfs && day.pdfs.length > 0;
-      const hasContent = hasVideos || hasPDFs;
+      const hasRepo = day.repo && day.repo.length > 0;
+      const hasContent = hasVideos || hasPDFs || hasRepo;
       
       const card = document.createElement('div');
       card.className = 'day-card' + (hasContent ? ' has-content' : '');
@@ -459,12 +460,14 @@
           </a>
         `).join('');
 
-        panelContent += `
-          <div class="section-card">
+       innerHTML += `
+        <div class="embed-panel">
+          <div class="pdf-section">
             <div class="pdf-section-label">🔗 Repositories</div>
             ${repoItems}
           </div>
-        `;
+        </div>
+      `;
       }
 
       // 5. Placeholder if empty
