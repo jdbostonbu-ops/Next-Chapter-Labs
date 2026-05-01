@@ -351,9 +351,9 @@
 
         { label: "Day 4 Human Lane vs AI Lane",
          repo: [
-            { title: "Day 4 Repository",
+            { title: "About Me Project",
             url: "https://jdbostonbu-ops.github.io/About-Me/" },
-            { title: "Day 4 Repository",
+            { title: "Dog Walking Business",
             url: "https://jdbostonbu-ops.github.io/Dog-Walking-Business/" },
        ], 
              pdfs: [
@@ -449,18 +449,20 @@
       }
       // 4. Build Repository Section
       if (day.repo) {
-        innerHTML += `
-          <div class="embed-panel">
-            <div class="pdf-section">
-              <div class="pdf-section-label">🔗 Repository</div>
-              <a href="${day.repo.url}" target="_blank" class="pdf-item" style="text-decoration: none; display: block;">
-                <div class="pdf-item-header">
-                  <span class="pdf-icon">💻</span>
-                  <span class="pdf-title">${day.repo.title}</span>
-                  <span class="pdf-arrow" style="transform: rotate(-45deg); display: inline-block;">↗</span>
-                </div>
-              </a>
+        const repoItems = day.repo.map(r => `
+          <a href="${r.url}" target="_blank" class="pdf-item" style="text-decoration: none; display: block;">
+            <div class="pdf-item-header">
+              <span class="pdf-icon">💻</span>
+              <span class="pdf-title">${r.title}</span>
+              <span class="pdf-arrow" style="transform: rotate(-45deg); display: inline-block;">↗</span>
             </div>
+          </a>
+        `).join('');
+
+        panelContent += `
+          <div class="section-card">
+            <div class="pdf-section-label">🔗 Repositories</div>
+            ${repoItems}
           </div>
         `;
       }
