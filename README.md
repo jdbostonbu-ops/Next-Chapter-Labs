@@ -5,7 +5,7 @@ Full-Stack Developer in Training · Master in Criminal Justice · Bachelor of Ar
 > This website was created in 5 minutes by applying correct prompting techniques and methods.
 
 - GitHub Profile: [jdbostonbu-ops](https://github.com/jdbostonbu-ops)
-- Project Website: (https://jdbostonbu-ops.github.io/Next-Chapter-Labs/)
+- Project Website:  [labs](https://jdbostonbu-ops.github.io/Next-Chapter-Labs/)
 - Dev Profile: [g.dev/jd-software-eng](https://g.dev/jd-software-eng)
 
 ---
