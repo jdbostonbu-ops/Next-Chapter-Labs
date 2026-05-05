@@ -1,0 +1,412 @@
+/* ============================================================
+   Next Chapter Phase I — Lab Journal Stylesheet
+   Original styles preserved, plus new image/gif gallery section.
+   ============================================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f7f5f2;
+    --surface: #ffffff;
+    --border: #e5e2dd;
+    --text: #1a1916;
+    --muted: #8a8780;
+    --accent: #2a5c8f;
+    --accent-light: #e8f0f8;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+header {
+    padding: 3rem 2rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.week { margin-bottom: 3rem; }
+
+.week-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.week-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.week-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+
+/* ── DAY CARD ── */
+.day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.day-card.has-content:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(42, 92, 143, 0.08);
+}
+
+.day-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.day-card:not(.has-content) .day-card-header {
+    cursor: default;
+}
+
+.day-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.expand-icon {
+    font-size: 18px;
+    color: var(--muted);
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.day-card.open .expand-icon {
+    transform: rotate(45deg);
+}
+
+
+/* ── EMBED PANEL ── */
+.embed-panel {
+    display: none;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.day-card.open .embed-panel {
+    display: block;
+}
+
+
+/* ── PLACEHOLDER ── */
+.placeholder {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+
+/* ── VIDEO LIST ── */
+.video-list {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.video-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.video-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.875rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.video-item-header:hover {
+    background: var(--accent-light);
+}
+
+.video-number {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    min-width: 18px;
+}
+
+.video-title {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+}
+
+.video-arrow {
+    font-size: 11px;
+    color: var(--muted);
+    transition: transform 0.25s ease;
+}
+
+.video-item.open .video-arrow {
+    transform: rotate(90deg);
+}
+
+.video-player {
+    display: none;
+    padding: 0.75rem;
+    border-top: 1px solid var(--border);
+    background: #000;
+}
+
+.video-item.open .video-player {
+    display: block;
+}
+
+.video-player video {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    max-height: 240px;
+}
+
+
+/* ── PDF SECTION ── */
+.pdf-section {
+    padding: 0.75rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pdf-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7c3aed;
+    padding: 0 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.pdf-item {
+    border: 1px solid #ddd5f5;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.pdf-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.875rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pdf-item-header:hover {
+    background: #f3eeff;
+}
+
+.pdf-icon { font-size: 14px; }
+
+.pdf-title {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+}
+
+.pdf-arrow {
+    font-size: 11px;
+    color: #7c3aed;
+    transition: transform 0.25s ease;
+}
+
+.pdf-item.open .pdf-arrow {
+    transform: rotate(90deg);
+}
+
+.pdf-viewer {
+    display: none;
+    border-top: 1px solid #ddd5f5;
+}
+
+.pdf-item.open .pdf-viewer {
+    display: block;
+}
+
+.pdf-viewer iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    display: block;
+}
+
+
+/* ============================================================
+   NEW: IMAGE / GIF GALLERY SECTION
+   For showing project screenshots, demo gifs, or annotated
+   walkthroughs of lab work. Color theme: warm coral to keep
+   it visually distinct from videos (blue) and PDFs (purple).
+   ============================================================ */
+
+.image-section {
+    padding: 0.75rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.image-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c2410c;
+    padding: 0 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.image-item {
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.image-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.875rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.image-item-header:hover {
+    background: #fff7ed;
+}
+
+.image-icon { font-size: 14px; }
+
+.image-title {
+    font-size: 13px;
+    color: var(--text);
+    flex: 1;
+}
+
+.image-arrow {
+    font-size: 11px;
+    color: #c2410c;
+    transition: transform 0.25s ease;
+}
+
+.image-item.open .image-arrow {
+    transform: rotate(90deg);
+}
+
+.image-viewer {
+    display: none;
+    padding: 0.75rem;
+    border-top: 1px solid #fed7aa;
+    background: #fafaf9;
+}
+
+.image-item.open .image-viewer {
+    display: block;
+}
+
+.image-viewer img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.image-caption {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+
+/* ── FOOTER ── */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    max-width: 960px;
+    margin: 0 auto;
+}
