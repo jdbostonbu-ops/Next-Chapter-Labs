@@ -81,7 +81,9 @@ const weeksData = [
                 label: "Day 2 Phase I: Thinking with AI",
                 repo: [
                     { title: "Forms + DOM Basics",
-                      url: "https://jdbostonbu-ops.github.io/quote-generator/" }
+                      url: "https://jdbostonbu-ops.github.io/quote-generator/" },
+                      { title: "404 Page with Button and Jokes",
+                      url: "https://jdbostonbu-ops.github.io/404-page/" }
                 ],
                 pdfs: [
                     { title: "Day 2 Lab Notes", src: "Labs/Wk2Day2.pdf" }
