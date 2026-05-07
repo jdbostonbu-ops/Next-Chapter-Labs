@@ -102,7 +102,16 @@ const weeksData = [
                     { title: "Day 3 Lab Notes", src: "Labs/Wk2Day2.pdf" }
                 ],
              },
-            { label: "Day 4" },
+            { label: "Day 4 JavaScript Fundamentals",
+                repo: [
+                    { title: "Mini Task App",
+                      url: "https://jdbostonbu-ops.github.io/mini-task-app/" },
+                    ],
+                     pdfs: [
+                    { title: "Day 3 Lab Notes", src: "Labs/Wk2_Day4.pdf" }
+                ],
+             },
+            
             { label: "Day 5" }
         ]
     },
