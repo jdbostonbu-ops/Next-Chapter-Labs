@@ -94,8 +94,12 @@ const weeksData = [
                 ]
             },
             { label: "Day 3 Debugging Day",
+                 repo: [
+                    { title: "Built a Full-Stack App",
+                      url: "https://dev-play-nine.vercel.app/" },
+                    ],
                  pdfs: [
-                    { title: "Day 2 Lab Notes", src: "Labs/Wk2Day2.pdf" }
+                    { title: "Day 3 Lab Notes", src: "Labs/Wk2Day2.pdf" }
                 ],
              },
             { label: "Day 4" },
