@@ -80,7 +80,7 @@ const weeksData = [
             {
                 label: "Day 2 Phase I: Thinking with AI",
                 repo: [
-                    { title: "Forms + DOM Basics",
+                    { title: "Forms/DOM Basics Quote Generator",
                       url: "https://jdbostonbu-ops.github.io/quote-generator/" },
                       { title: "404 Page with Button and Jokes",
                       url: "https://jdbostonbu-ops.github.io/404-page/" }
@@ -93,7 +93,11 @@ const weeksData = [
                     { title: "404 Page",  src: "Labs/404.mp4" },
                 ]
             },
-            { label: "Day 3" },
+            { label: "Day 3 Debugging Day",
+                 pdfs: [
+                    { title: "Day 2 Lab Notes", src: "Labs/Wk2Day2.pdf" }
+                ],
+             },
             { label: "Day 4" },
             { label: "Day 5" }
         ]
