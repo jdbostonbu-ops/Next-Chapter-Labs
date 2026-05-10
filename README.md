@@ -1,7 +1,7 @@
 ## Author
 
 **Jacqueline Delgado**
-Full-Stack Developer in Training · Master in Criminal Justice · Bachelor of Arts with a concentraion in Business
+Full-Stack Software Engineer in Training · Master in Criminal Justice · Bachelor of Arts with a concentraion in Business
 > This website was created in 5 minutes by applying correct prompting techniques and methods.
 
 - GitHub Profile: [jdbostonbu-ops](https://github.com/jdbostonbu-ops)
