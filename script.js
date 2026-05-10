@@ -118,6 +118,8 @@ const weeksData = [
                       url: "https://jdbostonbu-ops.github.io/neon-nastalgia-theme-generator/" },
                       { title: "Pomodoro Timer app",
                       url: "https://github.com/jdbostonbu-ops/ombre" },
+                      { title: "Image-data stripper app",
+                      url: "https://jdbostonbu-ops.github.io/husk/" },
                     ],
                      pdfs: [
                     { title: "Day 3 Lab Notes", src: "Labs/Theme Generator.pdf" }
