@@ -112,7 +112,7 @@ const weeksData = [
                 ],
              },
             
-            { label: "Day 5 Demo Friday",
+            { label: "Day 5 Vibe Code Fridays",
                 repo: [
                     { title: "Theme is Neon Nostalgia",
                       url: "https://jdbostonbu-ops.github.io/neon-nastalgia-theme-generator/" },
