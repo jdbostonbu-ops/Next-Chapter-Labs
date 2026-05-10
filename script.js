@@ -112,7 +112,18 @@ const weeksData = [
                 ],
              },
             
-            { label: "Day 5" }
+            { label: "Day 5 Demo Friday",
+                repo: [
+                    { title: "Theme is Neon Nostalgia",
+                      url: "https://jdbostonbu-ops.github.io/neon-nastalgia-theme-generator/" },
+                      { title: "Pomodoro Timer app",
+                      url: "https://github.com/jdbostonbu-ops/ombre" },
+                    ],
+                     pdfs: [
+                    { title: "Day 3 Lab Notes", src: "Labs/Theme Generator.pdf" }
+                ],
+
+             }
         ]
     },
     { week: 3,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
