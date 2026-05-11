@@ -106,6 +106,8 @@ const weeksData = [
                 repo: [
                     { title: "Mini Task App",
                       url: "https://jdbostonbu-ops.github.io/mini-task-app/" },
+                      { title: "Security Awareness Platform Game app",
+                      url: "https://jdbostonbu-ops.github.io/sap/" },
                     ],
                      pdfs: [
                     { title: "Day 3 Lab Notes", src: "Labs/Wk2_Day4.pdf" }
@@ -120,8 +122,6 @@ const weeksData = [
                       url: "https://github.com/jdbostonbu-ops/ombre" },
                       { title: "Image-data stripper app",
                       url: "https://jdbostonbu-ops.github.io/husk/" },
-                        { title: "Security Awareness Platform app",
-                      url: "https://jdbostonbu-ops.github.io/sap/" },
                     ],
                      pdfs: [
                     { title: "Day 3 Lab Notes", src: "Labs/Theme Generator.pdf" }
