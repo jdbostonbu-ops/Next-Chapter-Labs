@@ -130,8 +130,30 @@ const weeksData = [
              }
         ]
     },
-    { week: 3,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
-    { week: 4,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
+    { week: 3,  days: [{ label: "Day 1 Project Week Wireframes",
+                         repo: [
+                        { title: "Built Subscription Tracker PWA ",
+                           url: "https://jdbostonbu-ops.github.io/Claude-coyote-subscription-tracker/" },
+                        ],
+                        },  
+                       { label: "Day 2 Must Solve a Problem" },
+                       { label: "Day 3 Must be Front-End only",
+                        pdfs: [
+                        { title: "Day 3 Lab Notes", src: "Labs/Story Pot Wk 3 Project.pdf" }
+                        ],
+                        },
+                       { label: "Day 4 Progressive Web App Build" },
+                       { label: "Day 5 Project Demonstration",
+                        repo: [
+                        { title: "Story Pot PWA ",
+                           url: "https://story-pot.vercel.app/" },
+                        ],
+      }] },
+    { week: 4,  days: [{ label: "Day 1 - Phase II" },
+        { label: "Day 2" },
+        { label: "Day 3" },
+        { label: "Day 4" },
+        { label: "Day 5" }] },
     { week: 5,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
     { week: 6,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
     { week: 7,  days: [{ label: "Day 1" },{ label: "Day 2" },{ label: "Day 3" },{ label: "Day 4" },{ label: "Day 5" }] },
